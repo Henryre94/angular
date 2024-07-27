@@ -1,0 +1,7 @@
+<div *ngFor="let pokemon of pokemonList">
+    <app-pokemon-detail 
+    [detail]="pokemon"
+    (remove)="handleRemove($event)"
+    >
+</app-pokemon-detail>
+</div>
