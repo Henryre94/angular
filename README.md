@@ -1,27 +1,55 @@
-# MyApp
+### Angular Key Concepts
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+## String interpolation
+String Interpolation -> {{ }}   Define a variable in the Constructor like ´this.title="Henry"´ a use in the html lik {{ title }}
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Property binding
 
-## Code scaffolding
+Using h1 property like innerHtml if we put it in brackets like [innerHtml] it acts like a type check if the property is type for the h1
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Two-way Biding
 
-## Build
+[()] Important for forms
+´ngModel´: works behind the scenes and it in charge of creating the binding
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Template reference Variable
 
-## Running unit tests
+In Angular, template reference variables can be used to refer to elements within your template. You can access these variables in your component class methods to perform operations like getting the value of an input field.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+input type="text" #pokemonName
+button (click)="handleClick(pokemonName.value)">Click /button
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## NgClass
 
-## Further help
+Dynamically adds or removes CSS classes based on component state. Can be used with object, array, or string syntax.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The *ngFor directive is an Angular structural directive used to repeat a part of the DOM tree (in this case, the tr element) for each item in a collection.
+
+[class.cool-bool]="pokemon.isCool" -> first way
+[ngClass]="{'cool-bool': pokemon.isCool}" -> Robust "old" way
+
+## NgStyle
+
+Dynamically sets inline styles based on component state. Utilizes object syntax where keys are CSS properties and values are the corresponding values.
+
+[style.backgroundColor]="(pokemon.isCool ? '#800080' : '')"
+[ngStyle]="{backgroundColor : (pokemon.isCool ? '#800080' : '')}"
+
+## NgIf
+
+...
+<ng-container *ngIf="pokemonName.length; then pokemonList; else noPokemon">
+
+</ng-container>
+
+<ng-template #pokemonList>
+    <h1>All Pokemon available</h1>
+    .....
+</ng-template >
+
+<ng-template #noPokemon>
+    <h1>No pokemon available</h1>
+</ng-template>
+...
