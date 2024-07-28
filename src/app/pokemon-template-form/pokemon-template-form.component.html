@@ -1,10 +1,54 @@
-<form #form="ngForm">
-  Pokemon Name:
-  <input type="text" [(ngModel)]="pokemon.name" name="name" />
+<form #form="ngForm" class="pokemon-form">
+  <div class="form-group">
+    <label for="name" class="form-label">Pokemon Name:</label>
+    <input
+      type="text"
+      id="name"
+      class="form-input"
+      [(ngModel)]="pokemon.name"
+      name="name"
+    />
+  </div>
+
+  <fieldset class="form-group">
+    <legend class="form-legend">Is this Pokemon cool?</legend>
+    <label class="form-radio">
+      <input
+        type="radio"
+        name="isCool"
+        [value]="true"
+        [ngModel]="pokemon.isCool"
+        (ngModelChange)="toggleIsCool($event)"
+      />
+      Yes
+    </label>
+    <label class="form-radio">
+      <input
+        type="radio"
+        name="isCool"
+        [value]="false"
+        [ngModel]="pokemon.isCool"
+        (ngModelChange)="toggleIsCool($event)"
+      />
+      No
+    </label>
+  </fieldset>
+  <fieldset>
+    <label >
+      <input type="checkbox" name="acceptingTerms" [(ngModel)]="pokemon.acceptTermns" />
+      Accept Terms
+    </label>
+  </fieldset>
 </form>
 
+<div>
+  <div>
+    MODEL: {{ pokemon | json }}
+  </div>
+  <div>
+    FORM: {{ form.value | json }}
+  </div>
+  
+</div>
 
 
-
-MODEL: {{ pokemon | json }}
-FORM: {{ form.value | json }}

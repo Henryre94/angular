@@ -21,6 +21,12 @@ export class PokemonTemplateFormComponent implements OnInit {
     
   }
 
+  toggleIsCool(object: any){
+    console.log(object)
+  }
+
+
+
   ngOnInit() {
      this.pokemon = {} as Pokemon;
       this.pokemonService.getPokemon(1).subscribe(
