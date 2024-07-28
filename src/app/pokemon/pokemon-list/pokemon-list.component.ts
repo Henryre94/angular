@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
 import { CommonModule } from '@angular/common';
 import { PokemonDetailComponent } from '../pokemon-detail/pokemon-detail.component';
+import { PokemonService } from '../../../services/pokemon.service';
 
 
 
@@ -14,28 +15,9 @@ import { PokemonDetailComponent } from '../pokemon-detail/pokemon-detail.compone
 })
 export class PokemonListComponent {
 
+  pokemonList!: Pokemon[];
 
-  pokemonList: Pokemon[] = [{
-    id: 1,
-    name: "Squirtle",
-    type: "water",
-    isCool: true
-  },
-  {
-    id: 2,
-    name: "Charmander",
-    type: "fire",
-    isCool: true
-  },
-  {
-    id: 3,
-    name: "Bulbasor",
-    type: "plant",
-    isCool: false
-  }]
-
-
-  constructor() {
+  constructor(private pokemonService: PokemonService) {
     
   }
 
@@ -43,6 +25,13 @@ export class PokemonListComponent {
     this.pokemonList = this.pokemonList.filter((pokemonList: Pokemon) => {
         return pokemonList.id !== event.id;
     })
+  }
+
+
+  ngOnInit(): void {
+   this.pokemonService.getPokemons().subscribe((data: Pokemon[]) => {
+    this.pokemonList = data;
+   });
   }
 
   
