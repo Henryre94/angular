@@ -5,4 +5,9 @@ export interface Pokemon {
     isCool: boolean,
     acceptTermns: boolean,
   }
+
+  export interface PokemonType {
+    key: number;
+    value: string;
+  }
   

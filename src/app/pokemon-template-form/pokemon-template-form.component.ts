@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { error } from 'console';
+import { PokemonType } from './../models/pokemon';
 
 @Component({
   standalone: true,
@@ -15,6 +16,21 @@ import { error } from 'console';
 export class PokemonTemplateFormComponent implements OnInit {
 
   pokemon!: Pokemon;
+  pokemonType: PokemonType[] = [
+    {
+      key: 0,
+      value: 'Fire'
+    },
+    {
+      key: 1,
+      value: 'water'
+    },
+    {
+      key: 2,
+      value: 'Plant'
+    },
+
+  ]
 
 
   constructor(private pokemonService: PokemonService) {
@@ -25,10 +41,14 @@ export class PokemonTemplateFormComponent implements OnInit {
     console.log(object)
   }
 
+  handleSubmit(object: any) {
+    console.log(object);
+  }
+
 
 
   ngOnInit() {
-     this.pokemon = {} as Pokemon;
+      this.pokemon = {} as Pokemon;
       this.pokemonService.getPokemon(1).subscribe(
         (data: Pokemon)=>{
       this.pokemon = data;
