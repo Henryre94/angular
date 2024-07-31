@@ -1,7 +1,10 @@
+<div #pokemonDiv> This Pokemon</div>
 <div *ngFor="let pokemon of pokemonList">
     <app-pokemon-detail 
+    #pokemonRef
     [detail]="pokemon"
     (remove)="handleRemove($event)"
     >
+    
 </app-pokemon-detail>
 </div>

@@ -1,5 +1,7 @@
+<ng-content select="h1"></ng-content>
 <div>
     <h2  [ngClass]="{'cool-bool': detail.isCool, 'not-cool': !detail.isCool}">{{ detail.id }}</h2>
     <p>{{ detail.name }}</p>
+    <button [routerLink]="['/pokemon', detail.id]">Details</button>
     <button (click)="onRemove()">Remove</button>
-  </div>
+</div>

@@ -1,12 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Pokemon } from '../../models/pokemon';
-import { PokemonListComponent } from '../pokemon-list/pokemon-list.component';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-pokemon-detail',
   standalone: true,
-  imports: [CommonModule ],
+  imports: [CommonModule, RouterLink ],
   templateUrl: './pokemon-detail.component.html',
   styleUrl: './pokemon-detail.component.css'
 })
@@ -22,6 +23,9 @@ export class PokemonDetailComponent {
   onRemove() {
     this.remove.emit(this.detail)
   }
+
+
+
 
 
 }
